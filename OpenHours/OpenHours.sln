@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36327.8 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenHours", "OpenHours.csproj", "{23382BC3-6210-4878-A3C3-2EFF56D8F475}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenHoursTests", "..\OpenHoursTests\OpenHoursTests.csproj", "{907EDFCE-B115-4C84-AA07-4C6BA54BCE24}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23382BC3-6210-4878-A3C3-2EFF56D8F475}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23382BC3-6210-4878-A3C3-2EFF56D8F475}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23382BC3-6210-4878-A3C3-2EFF56D8F475}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23382BC3-6210-4878-A3C3-2EFF56D8F475}.Release|Any CPU.Build.0 = Release|Any CPU
+		{907EDFCE-B115-4C84-AA07-4C6BA54BCE24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{907EDFCE-B115-4C84-AA07-4C6BA54BCE24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{907EDFCE-B115-4C84-AA07-4C6BA54BCE24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{907EDFCE-B115-4C84-AA07-4C6BA54BCE24}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {40D1C770-7FB0-40FF-B370-40DA411A779D}
+	EndGlobalSection
+EndGlobal
