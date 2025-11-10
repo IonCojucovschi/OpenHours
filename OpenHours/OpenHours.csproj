@@ -5,7 +5,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <PackageId>OpenHours</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>Cojucovschi</Authors>
     <Company>Jivy Group</Company>
     <Description>Parser and evaluator for opening_hours syntax.</Description>
