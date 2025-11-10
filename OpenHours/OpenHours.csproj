@@ -1,7 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
-
+  <PropertyGroup>
+    <PackageId>OpenHours</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Cojucovschi</Authors>
+    <Company>Jivy Group</Company>
+    <Description>Parser and evaluator for opening_hours syntax.</Description>
+    <PackageTags>OpenHours;Open-Hours;WorkingHours;Working-Hours</PackageTags>
+    <RepositoryUrl>https://github.com/IonCojucovschi/OpenHours</RepositoryUrl>
+  </PropertyGroup>
 </Project>
