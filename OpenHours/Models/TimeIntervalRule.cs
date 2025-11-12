@@ -16,7 +16,7 @@ namespace OpenHours.Models
 
         public TimeRange TimeRange { get; set; }
 
-        public bool IsExcludingRange { get; set; }
+        public bool IsOff { get; set; }
 
         public int SeverityLevel { get; set; }
 
@@ -31,7 +31,7 @@ namespace OpenHours.Models
 
             if (GivenTime == default)
             {
-                return IsExcludingRange;
+                return IsOff;
             }
 
             bool Matches<T>(T range, Func<bool> condition)
@@ -46,13 +46,13 @@ namespace OpenHours.Models
                 return false;
             }
 
-            if (!Matches(MonthRange, () => MonthRange.Includes(GivenTime.Month))) return IsExcludingRange;
-            if (!Matches(DateRange, () => DateRange.Includes(GivenTime.Day))) return IsExcludingRange;
-            if (!Matches(WeekRange, () => WeekRange.Includes(GivenTime.DayOfWeek))) return IsExcludingRange;
-            if (!Matches(NthWeekDayRange, () => NthWeekDayRange.Includes(GivenTime))) return IsExcludingRange;
-            if (!Matches(TimeRange, () => TimeRange.Includes(GivenTime.TimeOfDay))) return IsExcludingRange;
+            if (!Matches(MonthRange, () => MonthRange.Includes(GivenTime.Month))) return IsOff;
+            if (!Matches(DateRange, () => DateRange.Includes(GivenTime.Day))) return IsOff;
+            if (!Matches(WeekRange, () => WeekRange.Includes(GivenTime.DayOfWeek))) return IsOff;
+            if (!Matches(NthWeekDayRange, () => NthWeekDayRange.Includes(GivenTime))) return IsOff;
+            if (!Matches(TimeRange, () => TimeRange.Includes(GivenTime.TimeOfDay))) return IsOff;
 
-            return !IsExcludingRange;
+            return !IsOff;
         }
     }
 

@@ -47,7 +47,7 @@ namespace OpenHours
 
             if (openHoursPattern == "off")
             {
-                timeIntervalRule.IsExcludingRange = true;
+                timeIntervalRule.IsOff = true;
                 return timeIntervalRule;
             }
 
@@ -66,69 +66,69 @@ namespace OpenHours
         private static (string pattern, Func<Match, TimeIntervalRule, string, TimeIntervalRule> handler)[] Patterns = new (string pattern, Func<Match, TimeIntervalRule, string, TimeIntervalRule> handler)[]
             {
                     // Month range: Jan-Feb
-                    (Constants._regexMonthRangePattern, (match, rule, input) =>
+                    (Constants.RegexMonthRangePattern, (match, rule, input) =>
                     {
                         var parts = match.Value.Trim().Split('-');
                         rule.MonthRange = new MonthRange
                         {
-                            StartMonth = Constants.monthMap[parts[0]],
-                            EndMonth = Constants.monthMap[parts[1]]
+                            StartMonth = Constants.MonthsMap[parts[0]],
+                            EndMonth = Constants.MonthsMap[parts[1]]
                         };
                         return Recurse(input, match.Value, rule);
                     }),
 
                     // Single month: Jan
-                    (Constants._regexMonthPattern, (match, rule, input) =>
+                    (Constants.RegexMonthPattern, (match, rule, input) =>
                     {
                         var month = match.Value.Trim();
                         rule.MonthRange = new MonthRange
                         {
-                            StartMonth = Constants.monthMap[month],
-                            EndMonth = Constants.monthMap[month]
+                            StartMonth = Constants.MonthsMap[month],
+                            EndMonth = Constants.MonthsMap[month]
                         };
                         return Recurse(input, match.Value, rule);
                     }),
 
                     // Weekday range: Mo-Th
-                    (Constants._regexWeekDaysRange, (match, rule, input) =>
+                    (Constants.RegexWeekDaysRange, (match, rule, input) =>
                     {
                         var parts = match.Value.Trim().Split('-');
                         rule.WeekRange = new WeekRange
                         {
-                            StartDayOfWeek = Constants.dayMap[parts[0]],
-                            EndDayOfWeek = Constants.dayMap[parts[1]]
+                            StartDayOfWeek = Constants.DaysMap[parts[0]],
+                            EndDayOfWeek = Constants.DaysMap[parts[1]]
                         };
                         return Recurse(input, match.Value, rule);
                     }),
 
                     // Nth weekday: Mo[3]
-                    (Constants._regexNthWeekDayInMonth, (match, rule, input) =>
+                    (Constants.RegexNthWeekDayInMonth, (match, rule, input) =>
                     {
                         var day = match.Groups[1].Value;
                         var nth = int.Parse(match.Groups[2].Value);
                         rule.NthWeekDayRange = rule.NthWeekDayRange==null ? new NthWeekDayRange():rule.NthWeekDayRange;
                         rule.NthWeekDayRange.NthWeekDays.Add(new NthWeekDay
                         {
-                            DayOfWeek = Constants.dayMap[day],
+                            DayOfWeek = Constants.DaysMap[day],
                             Occurence = nth
                         });
                         return Recurse(input, match.Value, rule, true);
                     }),
 
                     // Single weekday: Mo
-                    (Constants._regexSpecificDayOfWeek, (match, rule, input) =>
+                    (Constants.RegexSpecificDayOfWeek, (match, rule, input) =>
                     {
                         var day = match.Value.Trim();
                         rule.WeekRange = new WeekRange
                         {
-                            StartDayOfWeek = Constants.dayMap[day],
-                            EndDayOfWeek = Constants.dayMap[day]
+                            StartDayOfWeek = Constants.DaysMap[day],
+                            EndDayOfWeek = Constants.DaysMap[day]
                         };
                         return Recurse(input, match.Value, rule);
                     }),
 
                     // Date range: 02-23
-                    (Constants._regexSpecificDatesRange, (match, rule, input) =>
+                    (Constants.RegexSpecificDatesRange, (match, rule, input) =>
                     {
                         if (int.TryParse(match.Groups[1].Value, out int start) && int.TryParse(match.Groups[2].Value, out int end))
                         {
@@ -138,7 +138,7 @@ namespace OpenHours
                     }),
 
                     // Time range: 02:30-23:20
-                    (Constants._regexSpecificHoursRange, (match, rule, input) =>
+                    (Constants.RegexSpecificHoursRange, (match, rule, input) =>
                     {
                         var parts = match.Value.Trim().Split('-');
                         var start = parts[0];
@@ -151,7 +151,7 @@ namespace OpenHours
                     }),
 
                     // Single date: 02
-                    (Constants._regexSpecificDateRange, (match, rule, input) =>
+                    (Constants.RegexSpecificDateRange, (match, rule, input) =>
                     {
                         if (int.TryParse(match.Groups[1].Value, out int date))
                         {
