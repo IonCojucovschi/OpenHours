@@ -8,8 +8,8 @@
     <Version>1.0.1</Version>
     <Authors>Cojucovschi</Authors>
     <Company>Jivy Group</Company>
-    <Description>Parser and evaluator for opening_hours syntax.</Description>
-    <PackageTags>OpenHours;Open-Hours;WorkingHours;Working-Hours</PackageTags>
+    <Description>OpenHours is a .NET Standard 2.0 library for parsing and evaluating business opening hours using the widely-adopted opening_hours syntax.It supports day ranges, multiple time intervals, overnight spans, date ranges, public holidays, and exceptions. Ideal for business directories, scheduling, or applications that need accurate open/closed checks.</Description>
+    <PackageTags>OpenHours;Open-Hours;Open Hours;OpeningHours;Opening Hours;Opening-Hours;WorkingHours;Working-Hours;Working Hours;BusinessHours;Business Hours;Business-Hours </PackageTags>
     <RepositoryUrl>https://github.com/IonCojucovschi/OpenHours</RepositoryUrl>
   </PropertyGroup>
 </Project>
