@@ -20,8 +20,8 @@ namespace OpenHours
             // Split and classify patterns
             var timeRanges = openHoursPattern.Split(';').Select(el => el.Trim());
 
-            var inclusiveRules = timeRanges.Where(r => !r.Contains("off")).Select(pattern => { var rule = ParceInterval(pattern); rule.IsOpen(time); return rule; }).ToList();
-            var exclusiveRules = timeRanges.Where(r => r.Contains("off")).Select(pattern => { var rule = ParceInterval(pattern); rule.IsOpen(time); return rule; }).ToList();
+            var inclusiveRules = timeRanges.Where(r => !r.Contains("off")).Select(pattern => { var rule = Parce(pattern); rule.IsOpen(time); return rule; }).ToList();
+            var exclusiveRules = timeRanges.Where(r => r.Contains("off")).Select(pattern => { var rule = Parce(pattern); rule.IsOpen(time); return rule; }).ToList();
 
             var maxSeverityLevel = inclusiveRules.Count > 0 ? inclusiveRules.Max(r => r.SeverityLevel) : 0;
             // Evaluate inclusive rules
@@ -35,7 +35,7 @@ namespace OpenHours
             return isInRange && isClosed;
         }
 
-        public static TimeIntervalRule ParceInterval(string openHoursPattern, TimeIntervalRule timeIntervalRule = null)
+        public static TimeIntervalRule Parce(string openHoursPattern, TimeIntervalRule timeIntervalRule = null)
         {
             if (timeIntervalRule == null)
             {
@@ -165,7 +165,7 @@ namespace OpenHours
         {
             var next = Regex.Replace(input, Regex.Escape(matched), "").Trim();
             if (trimComma && next.StartsWith(",")) next = next.Substring(1).Trim();
-            return string.IsNullOrEmpty(next) ? rule : ParceInterval(next, rule);
+            return string.IsNullOrEmpty(next) ? rule : Parce(next, rule);
         }
     }
 

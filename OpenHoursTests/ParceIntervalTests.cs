@@ -17,7 +17,7 @@ namespace OpenHoursTests
         public void CheckHoursRange(string pattern, string dateTimeString, bool expected)
         {
             var dateTime = DateTime.Parse(dateTimeString);
-            var rule = OpeningHours.ParceInterval(pattern);
+            var rule = OpeningHours.Parce(pattern);
             var result = rule.IsOpen(dateTime);
             Assert.That(expected, Is.EqualTo(result));
         }
@@ -39,7 +39,7 @@ namespace OpenHoursTests
         public void CheckDate(string pattern, string dateTimeString, bool expected)
         {
             var dateTime = DateTime.Parse(dateTimeString);
-            var rule = OpeningHours.ParceInterval(pattern);
+            var rule = OpeningHours.Parce(pattern);
             var result = rule.IsOpen(dateTime);
             Assert.That(expected, Is.EqualTo(result));
         }
@@ -62,7 +62,7 @@ namespace OpenHoursTests
         public void CheckWeekDayRange(string pattern, string dateTimeString, bool expected)
         {
             var dateTime = DateTime.Parse(dateTimeString);
-            var rule = OpeningHours.ParceInterval(pattern);
+            var rule = OpeningHours.Parce(pattern);
             var result = rule.IsOpen(dateTime);
             Assert.That(expected, Is.EqualTo(result));
         }
@@ -85,7 +85,7 @@ namespace OpenHoursTests
         public void CheckNthWeekDayInMonth(string pattern, string dateTimeString, bool expected)
         {
             var dateTime = DateTime.Parse(dateTimeString);
-            var rule = OpeningHours.ParceInterval(pattern);
+            var rule = OpeningHours.Parce(pattern);
             var result = rule.IsOpen(dateTime);
             Assert.That(expected, Is.EqualTo(result));
         }
@@ -103,7 +103,7 @@ namespace OpenHoursTests
         public void CheckWeekDay(string pattern, string dateTimeString, bool expected)
         {
             var dateTime = DateTime.Parse(dateTimeString);
-            var rule = OpeningHours.ParceInterval(pattern);
+            var rule = OpeningHours.Parce(pattern);
             var result = rule.IsOpen(dateTime);
             Assert.That(expected, Is.EqualTo(result));
         }
@@ -155,7 +155,7 @@ namespace OpenHoursTests
         public void CheckIfDateIsInOpenHours_ShouldReturnExpected(string pattern, string dateTimeString, bool expected)
         {
             var dateTime = DateTime.Parse(dateTimeString);
-            var rule = OpeningHours.ParceInterval(pattern);
+            var rule = OpeningHours.Parce(pattern);
             var result = rule.IsOpen(dateTime);
             Assert.That(expected, Is.EqualTo(result));
         }
@@ -192,7 +192,7 @@ namespace OpenHoursTests
         public void CheckMidnightAndFullDayRanges(string pattern, string dateTimeString, bool expected)
         {
             var dateTime = DateTime.Parse(dateTimeString);
-            var rule = OpeningHours.ParceInterval(pattern);
+            var rule = OpeningHours.Parce(pattern);
             var result = rule.IsOpen(dateTime);
             Assert.That(result, Is.EqualTo(expected));
         }
